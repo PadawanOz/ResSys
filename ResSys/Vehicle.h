@@ -12,4 +12,3 @@ public:
 	void setDriver(string name);
 	void setColor(string colour);
 };
-
