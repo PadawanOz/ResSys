@@ -147,6 +147,9 @@
     <ClInclude Include="reservation.h" />
     <ClInclude Include="Vehicle.h" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="dodgeball_team.txt" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
