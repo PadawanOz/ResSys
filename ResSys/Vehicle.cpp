@@ -4,9 +4,10 @@ Vehicle::Vehicle()
 {
 }
 
-void Vehicle::setDriver(string name)
+void Vehicle::setDriver(string fn, string ln)
 {
-	driver = name;
+	driverFirst = fn;
+	driverLast = ln;
 }
 
 void Vehicle::setColor(string colour)

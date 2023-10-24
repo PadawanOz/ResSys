@@ -4,6 +4,10 @@ class Pickup : public Vehicle
 {
 private:
 	bool openSeat;
+	int seatCost;
 public:
-	void setSeat(bool claim);
+	Pickup();
+	void setSeat(bool claim);//0 is open 1 is filled
+	bool getSeat();
+	int getSeatVal();
 };
