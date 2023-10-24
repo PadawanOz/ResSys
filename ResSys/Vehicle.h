@@ -9,6 +9,7 @@ protected:
 	string color;
 public:
 	Vehicle();
-
+	void setDriver(string name);
+	void setColor(string colour);
 };
 
