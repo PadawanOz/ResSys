@@ -7,5 +7,8 @@ class Vehicle
 protected:
 	string driver;
 	string color;
+public:
+	Vehicle();
+
 };
 
