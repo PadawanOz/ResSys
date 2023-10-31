@@ -2,15 +2,16 @@
 
 Pickup::Pickup()
 {
-	openSeats->at(0) = 1; //1 means seat is open
+	openSeats.push_back(1); //1 means seat is open
 	seatCost.push_back(5);
+	setSeatNumber(1);
 }
 
 void Pickup::setSeat(bool claim,int seatNum)
 {
 	if (seatNum == 0)
 	{
-		openSeats->at(seatNum) = claim;
+		openSeats.at(seatNum) = claim;
 	}
 	else
 	{
@@ -19,12 +20,12 @@ void Pickup::setSeat(bool claim,int seatNum)
 	}
 }
 
-bool Pickup::getSeat()
+bool Pickup::getSeat()//might remove
 {
-	return openSeats;
+	return openSeats.at(0);
 }
 
-int Pickup::getSeatVal()
+int Pickup::getSeatVal()//doesnt need to be complex since there is one seat.
 {
 	return 5;
 }

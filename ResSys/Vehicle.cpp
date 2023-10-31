@@ -2,6 +2,12 @@
 
 Vehicle::Vehicle()
 {
+	seats = 0;
+}
+
+void Vehicle::setSeatNumber(int seatnums)
+{
+	seats = seatnums;
 }
 
 void Vehicle::setDriver(string fn, string ln)
