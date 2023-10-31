@@ -1,13 +1,15 @@
 #pragma once
 #include "Vehicle.h"
+#include <iostream>
+using namespace std;
+
 class Pickup : public Vehicle
 {
 private:
-	bool openSeat;
-	//int seatCost;
+	int seatNums = 1;
 public:
 	Pickup();
-	void setSeat(bool claim);//0 is open 1 is filled
+	void setSeat(bool claim, int seatNum);//0 is open 1 is filled
 	bool getSeat();
 	int getSeatVal();
 };

@@ -10,6 +10,7 @@ protected:
 	string driverLast;// last name
 	string color;// vehicle color
 	vector<int> seatCost;
+	vector<bool> openSeats[4];
 public:
 	Vehicle();
 	void setDriver(string fn, string ln);

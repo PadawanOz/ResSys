@@ -141,6 +141,7 @@
   <ItemGroup>
     <ClCompile Include="Compact.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Person.cpp" />
     <ClCompile Include="Pickup.cpp" />
     <ClCompile Include="reservation.cpp" />
     <ClCompile Include="functions.cpp" />
@@ -149,6 +150,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Compact.h" />
+    <ClInclude Include="Person.h" />
     <ClInclude Include="Pickup.h" />
     <ClInclude Include="reservation.h" />
     <ClInclude Include="Sedan.h" />
