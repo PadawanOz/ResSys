@@ -15,17 +15,17 @@ void Pickup::setSeat(bool claim,int seatNum)
 	}
 	else
 	{
-		cout << "Invalid Seat. No changes made" << endl;
+		cout << "Invalid Seat. No Changes Made" << endl;
 		//give ErrorCode
 	}
 }
 
 bool Pickup::getSeat()//might remove
 {
-	return openSeats.at(0);
+		return openSeats.at(0);
 }
 
 int Pickup::getSeatVal()//doesnt need to be complex since there is one seat.
 {
-	return 5;
+	return seatCost.at(0);
 }

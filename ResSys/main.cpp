@@ -18,7 +18,5 @@ using namespace std;
 void main()
 {
 	//make testing values at somepoint
-	Pickup truckOne;
-
-	cout << truckOne.getSeat() << endl;
+	//Pickup truckOne; cout << truckOne.getSeat() << ", " << truckOne.getSeatVal() << endl;
 }
