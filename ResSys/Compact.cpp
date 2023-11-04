@@ -2,6 +2,29 @@
 
 Compact::Compact()
 {
+	driverFirst = "FirstName";
+	driverLast = "LastName";
+	color = "Colour";
+
+	setSeatNumber(3);//number of seats
+
+	//seat availablility defaults
+	openSeats.push_back(1);//fromnt passenger
+	openSeats.push_back(1);//left Window
+	openSeats.push_back(1);//righ twindow
+
+	//seat prices
+	seatCost.push_back(5);//front passenger
+	seatCost.push_back(3);//left Window
+	seatCost.push_back(3);//right window
+}
+
+Compact::Compact(string first, string last, string colour)
+{
+	driverFirst = first;
+	driverLast = last;
+	color = colour;
+
 	setSeatNumber(3);//number of seats
 
 	//seat availablility defaults
@@ -50,5 +73,17 @@ int Compact::getSeatVal(int seatNum)
 	{
 		cout << "Invalid Seat. Returning 0." << endl;
 		return(0);
+	}
+}
+
+char Compact::dispSeat(int seatNum)
+{
+	if (openSeats.at(seatNum) == 0)
+	{
+		return 'X';
+	}
+	else
+	{
+		return (seatCost.at(seatNum)) + '0';
 	}
 }

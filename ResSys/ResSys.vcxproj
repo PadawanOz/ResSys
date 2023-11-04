@@ -150,6 +150,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Compact.h" />
+    <ClInclude Include="functions.h" />
+    <ClInclude Include="includes.h" />
     <ClInclude Include="Person.h" />
     <ClInclude Include="Pickup.h" />
     <ClInclude Include="reservation.h" />
