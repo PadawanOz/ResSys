@@ -10,3 +10,4 @@ using namespace std;
 int chartoint(string numIn);
 void FileIn(string fileName, vector<Pickup>&, vector<Compact>&, vector<Sedan>&, vector<Person>&);
 int makeRand(int length);
+string makeLower(string input);

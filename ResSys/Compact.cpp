@@ -9,9 +9,9 @@ Compact::Compact()
 	setSeatNumber(3);//number of seats
 
 	//seat availablility defaults
-	openSeats.push_back(1);//fromnt passenger
-	openSeats.push_back(1);//left Window
-	openSeats.push_back(1);//righ twindow
+	openSeats.push_back(1);//fromnt passenger	0
+	openSeats.push_back(1);//left Window		1
+	openSeats.push_back(1);//righ twindow		2
 
 	//seat prices
 	seatCost.push_back(5);//front passenger

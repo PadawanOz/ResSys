@@ -20,6 +20,11 @@ string Vehicle::getColor()
 	return color;
 }
 
+int Vehicle::getNumSeats()
+{
+	return openSeats.size();
+}
+
 void Vehicle::setDriver(string fn, string ln)
 {
 	driverFirst = fn;

@@ -18,6 +18,7 @@ public:
 	void setDriver(string fn, string ln);
 	void setColor(string colour);
 
+	int getNumSeats();
 	string getColor();//return color
 
 	void DisplayForTest();//function for making sure vehicle data is being imported correctly.

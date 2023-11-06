@@ -35,7 +35,7 @@ void Pickup::setSeat(bool claim,int seatNum)
 	}
 }
 
-bool Pickup::getSeat()//might remove
+bool Pickup::getSeat()//return 0 if full 1 is available
 {
 		return openSeats.at(0);
 }

@@ -93,5 +93,14 @@ int makeRand(int length)
 	return temp;
 }
 
+string makeLower(string input)
+{
+	string temp;
+	for (int i = 0; i < input.length(); i++)
+	{
+		temp.push_back(tolower(input.at(i)));
+	}
+	return temp;
+}
 
 //maybe function for centering text?

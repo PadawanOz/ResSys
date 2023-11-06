@@ -9,10 +9,10 @@ Sedan::Sedan()
 	setSeatNumber(4);//number of passender seats
 	
 	//seat availablility defaults
-	openSeats.push_back(1);//fromnt passenger
-	openSeats.push_back(1);//leftWindo
-	openSeats.push_back(1);//rightwindow
-	openSeats.push_back(1);//middleseat
+	openSeats.push_back(1);//fromnt passenger	0
+	openSeats.push_back(1);//leftWindo			1
+	openSeats.push_back(1);//rightwindow		2
+	openSeats.push_back(1);//middleseat			3
 	
 	//seat prices
 	seatCost.push_back(5);//front passenger
