@@ -12,7 +12,7 @@ class Reservation//only need to have one class instance
 private:
 	//Pins will have pointers to where the seat is as well as a number to make them unique(linked to vector length)
 	vector<int> PINS;
-	//PIN=car-colorPos(where in vehicle vector car is)-seatPos-PINLength
+	//PIN=car-colorPos(where in vehicle vector car is)-seatPos-passengerPos-PINLength
 
 	vector<Pickup> pickups;//carPinVal=1
 	vector<Compact> compacts;//carPinVal=2
@@ -21,8 +21,9 @@ private:
 public:
 	
 	Reservation();
-	int Create(string FirstName);//takes firstname returns int with reservation pin
+	int Create();//takes firstname returns int with reservation pin
 	void Display();
+	int makePIN(int car, int color, int seat, int person);
 	
 
 };

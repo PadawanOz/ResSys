@@ -79,15 +79,15 @@ void FileIn(string fileName, vector<Pickup>& pickups, vector<Compact>& compacts,
 	infile.close();
 }
 
-int makeRand(int length)
+int makeRand(int length)//makes random number of length. no numbers are 0
 {
 	int temp = 0;
 	int power = 0;
 
 	for (int i = 0; i < length; i++)
 	{
-		power = length - (i + 1);
-		temp += ( (rand()%10) * pow(10, power));
+		power = length - (i + 1);//start in the highest position
+		temp += ( ((rand()%9)+1) * pow(10, power));//random number 1-9 times 10^(i+1)
 	}
 
 	return temp;
@@ -102,5 +102,6 @@ string makeLower(string input)
 	}
 	return temp;
 }
+
 
 //maybe function for centering text?

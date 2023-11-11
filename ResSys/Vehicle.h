@@ -17,7 +17,7 @@ public:
 	void setSeatNumber(int seatnums);//functions for manually setting variables
 	void setDriver(string fn, string ln);
 	void setColor(string colour);
-
+	void setSeat(int seat, bool avail);//0 for full, 1 for taken
 	int getNumSeats();
 	string getColor();//return color
 

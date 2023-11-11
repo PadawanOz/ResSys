@@ -38,7 +38,7 @@ Compact::Compact(string first, string last, string colour)
 	seatCost.push_back(3);//right window
 }
 
-void Compact::setSeat(bool claim, int seatNum)
+/*void Compact::setSeat(bool claim, int seatNum)
 {
 	if (seatNum >= 0 && seatNum < seats)
 	{
@@ -48,7 +48,7 @@ void Compact::setSeat(bool claim, int seatNum)
 	{
 		cout << "Invalid Seat. No Changes Made." << endl;
 	}
-}
+}//*/
 
 bool Compact::getSeat(int seatNum)
 {

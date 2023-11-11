@@ -42,7 +42,7 @@ Sedan::Sedan(string first, string last, string colour)
 	seatCost.push_back(1);//middleseat
 }
 
-void Sedan::setSeat(bool claim, int seatNum)
+/*void Sedan::setSeat(bool claim, int seatNum)
 {
 	if (seatNum >= 0 && seatNum < seats)
 	{
@@ -52,7 +52,7 @@ void Sedan::setSeat(bool claim, int seatNum)
 	{
 		cout << "Invalid Seat. No Changes Made." << endl;
 	}
-}
+}//*/
 
 bool Sedan::getSeat(int seatNum)
 {

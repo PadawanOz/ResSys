@@ -39,7 +39,8 @@ void Person::SetPin(int pinnum)
 	pin = pinnum;
 }
 
-string Person::GetFirstName() {
+string Person::GetFirstName() 
+{
 	return first_name;
 }
 

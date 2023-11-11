@@ -22,18 +22,10 @@ Pickup::Pickup(string first, string last, string colour)
 	setSeatNumber(1);
 }
 
-void Pickup::setSeat(bool claim,int seatNum)
+/*void Pickup::setSeat(bool claim)//0 for taken 
 {
-	if (seatNum == 0)
-	{
-		openSeats.at(seatNum) = claim;
-	}
-	else
-	{
-		cout << "Invalid Seat. No Changes Made" << endl;
-		//give ErrorCode
-	}
-}
+		openSeats.at(0) = claim;
+}//*/
 
 bool Pickup::getSeat()//return 0 if full 1 is available
 {
