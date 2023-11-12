@@ -8,9 +8,13 @@ protected:
 	string driverFirst;// first name
 	string driverLast;// last name
 	string color;// vehicle color
+
 	vector<int> seatCost;
 	vector<bool> openSeats;//0 for full, 1 for empty
+	vector<int> pinsResd;//first digit is person location for different class, second is random, last digit is which seat
+
 	int seats;//besides driver
+
 public:
 	Vehicle();//constructor
 
@@ -18,8 +22,12 @@ public:
 	void setDriver(string fn, string ln);
 	void setColor(string colour);
 	void setSeat(int seat, bool avail);//0 for full, 1 for taken
+	void DisplayForTest();//function for making sure vehicle data is being imported correctly.
+
+	int getSeatVal(int seatnumMO);
 	int getNumSeats();
+
 	string getColor();//return color
 
-	void DisplayForTest();//function for making sure vehicle data is being imported correctly.
+	
 };

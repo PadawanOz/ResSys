@@ -10,6 +10,6 @@ public:
 	//void setSeat(bool claim, int seatNum);//1 is open 0 is filled
 
 	bool getSeat(int seatNum);//get seat availability
-	int getSeatVal(int seatNum);//get seat cost
+	//int getSeatVal(int seatNum);//get seat cost
 	char dispSeat(int seatNum);
 };

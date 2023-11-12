@@ -13,12 +13,16 @@
 
 using namespace std;
 
-void main()
+void main()//assuming noone makes more than one reservation.
 {
 	srand(time(NULL));//set seed based off time so pins should be random with every run. (got code for time useage from a google search)
 	Reservation reserve;
 
-	cout<<reserve.Create()<<endl;
+	for (int i = 0; i < 3; i++)
+	{
+		cout << reserve.Create() << endl;
+	}
+	reserve.Modify();
 
 	//--------------TESTING Code--------------//
 	// 

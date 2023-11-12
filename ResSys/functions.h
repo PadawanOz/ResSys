@@ -8,6 +8,9 @@
 using namespace std;
 
 int chartoint(string numIn);
-void FileIn(string fileName, vector<Pickup>&, vector<Compact>&, vector<Sedan>&, vector<Person>&);
 int makeRand(int length);
+int GetFirstDigit(int num);
+
+void FileIn(string fileName, vector<Pickup>&, vector<Compact>&, vector<Sedan>&, vector<Person>&);
+
 string makeLower(string input);

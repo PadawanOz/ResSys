@@ -63,6 +63,7 @@ bool Compact::getSeat(int seatNum)
 	}
 }
 
+/*
 int Compact::getSeatVal(int seatNum)
 {
 	if (seatNum >= 0 && seatNum < seats)
@@ -74,7 +75,7 @@ int Compact::getSeatVal(int seatNum)
 		cout << "Invalid Seat. Returning 0." << endl;
 		return(0);
 	}
-}
+}//*/
 
 char Compact::dispSeat(int seatNum)
 {

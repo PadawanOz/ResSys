@@ -37,6 +37,19 @@ int Vehicle::getNumSeats()
 	return openSeats.size();
 }
 
+int Vehicle::getSeatVal(int seatnumMO)//assuming you give it seatPos from pin which has a 1 added to it and is never 0
+{
+	if (seatnumMO < openSeats.size() && seatnumMO >= 0)
+	{
+		return seatCost.at(seatnumMO-1);
+	}
+	else
+	{
+		cout << "invalid seat position. returning 0.";
+		return 0;
+	}
+}
+
 void Vehicle::setDriver(string fn, string ln)
 {
 	driverFirst = fn;

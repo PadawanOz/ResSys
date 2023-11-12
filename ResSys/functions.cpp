@@ -93,6 +93,16 @@ int makeRand(int length)//makes random number of length. no numbers are 0
 	return temp;
 }
 
+int GetFirstDigit(int num)
+{
+	int temp = num;
+	while (temp > 10)
+	{
+		temp /= 10;
+	}
+	return temp;
+}
+
 string makeLower(string input)
 {
 	string temp;
@@ -102,6 +112,5 @@ string makeLower(string input)
 	}
 	return temp;
 }
-
 
 //maybe function for centering text?

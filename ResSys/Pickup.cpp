@@ -30,12 +30,13 @@ Pickup::Pickup(string first, string last, string colour)
 bool Pickup::getSeat()//return 0 if full 1 is available
 {
 		return openSeats.at(0);
+		//if I wasnt already using it without problems I'd put this function into the vehicle class.
 }
 
-int Pickup::getSeatVal()//doesnt need to be complex since there is one seat.
+/*int Pickup::getSeatVal()//doesnt need to be complex since there is one seat.
 {
 	return seatCost.at(0);
-}
+}//*/
 
 char Pickup::dispSeat()
 {

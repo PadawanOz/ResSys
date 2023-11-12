@@ -67,6 +67,7 @@ bool Sedan::getSeat(int seatNum)
 	}
 }
 
+/*
 int Sedan::getSeatVal(int seatNum)
 {
 	if (seatNum >= 0 && seatNum < seats)
@@ -78,7 +79,7 @@ int Sedan::getSeatVal(int seatNum)
 		cout << "Invalid Seat. Returning 0." << endl;
 		return(0);
 	}
-}
+}//*/
 
 char Sedan::dispSeat(int seatNum)
 {
