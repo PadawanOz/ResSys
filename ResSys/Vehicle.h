@@ -1,3 +1,10 @@
+/*
+* Vehicle.h
+* gavin mcintosh and shaun ryan
+* cpet 321
+*
+* header file for class Vehicle.
+*/
 #pragma once
 #include "includes.h"
 using namespace std;
@@ -24,10 +31,13 @@ public:
 	void setSeat(int seat, bool avail);//0 for full, 1 for taken
 	void DisplayForTest();//function for making sure vehicle data is being imported correctly.
 
+	string GetDriverFirst();
+	string GetDriverLast();
+
 	int getSeatVal(int seatnumMO);
 	int getNumSeats();
 
 	string getColor();//return color
 
-	
+
 };

@@ -1,11 +1,18 @@
+/*
+* Compact.h
+* gavin mcintosh and shaun ryan
+* cpet 321
+*
+* header file for class compact.
+*/
 #pragma once
 #include "Vehicle.h"
 
-class Compact : public Vehicle
+class Compact : public Vehicle 
 {
 public:
 	Compact();//constructors
-	Compact(string first, string last, string colour);//this constructor should be used
+	Compact(string first, string last, string colour); 
 
 	//void setSeat(bool claim, int seatNum);// set to 1 is open 0 is filled
 

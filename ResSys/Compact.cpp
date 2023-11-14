@@ -1,6 +1,14 @@
+/*
+* Compact.cpp
+* gavin mcintosh and shaun ryan
+* cpet 321
+*
+* main file for class compacts. compacts is a subclass of class vehicle.
+*/
+
 #include "Compact.h"
 
-Compact::Compact()
+Compact::Compact() //constructor-default
 {
 	driverFirst = "FirstName";
 	driverLast = "LastName";
@@ -19,7 +27,7 @@ Compact::Compact()
 	seatCost.push_back(3);//right window
 }
 
-Compact::Compact(string first, string last, string colour)
+Compact::Compact(string first, string last, string colour) //constructor with params
 {
 	driverFirst = first;
 	driverLast = last;
@@ -38,19 +46,9 @@ Compact::Compact(string first, string last, string colour)
 	seatCost.push_back(3);//right window
 }
 
-/*void Compact::setSeat(bool claim, int seatNum)
-{
-	if (seatNum >= 0 && seatNum < seats)
-	{
-		openSeats.at(seatNum) = claim;
-	}
-	else
-	{
-		cout << "Invalid Seat. No Changes Made." << endl;
-	}
-}//*/
 
-bool Compact::getSeat(int seatNum)
+
+bool Compact::getSeat(int seatNum) //accessir for seat, grabs from vehicle
 {
 	if (seatNum >= 0 && seatNum < seats)
 	{
@@ -64,7 +62,7 @@ bool Compact::getSeat(int seatNum)
 }
 
 /*
-int Compact::getSeatVal(int seatNum)
+int Compact::getSeatVal(int seatNum)		//temp seatcost function
 {
 	if (seatNum >= 0 && seatNum < seats)
 	{
@@ -77,7 +75,7 @@ int Compact::getSeatVal(int seatNum)
 	}
 }//*/
 
-char Compact::dispSeat(int seatNum)
+char Compact::dispSeat(int seatNum)		//function for display
 {
 	if (openSeats.at(seatNum) == 0)
 	{

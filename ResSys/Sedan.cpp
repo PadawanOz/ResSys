@@ -1,19 +1,27 @@
+/*
+* Sedan.cpp
+* gavin mcintosh and shaun ryan
+* cpet 321
+*
+* main file for class Sedan. Sedan is a subclass of Vehicle.
+*/
+
 #include "Sedan.h"
 
-Sedan::Sedan()
+Sedan::Sedan() //constructor-default
 {
 	driverFirst = "FirstName";
 	driverLast = "LastName";
 	color = "Colour";
 
 	setSeatNumber(4);//number of passender seats
-	
+
 	//seat availablility defaults
 	openSeats.push_back(1);//fromnt passenger	0
 	openSeats.push_back(1);//leftWindo			1
 	openSeats.push_back(1);//rightwindow		2
 	openSeats.push_back(1);//middleseat			3
-	
+
 	//seat prices
 	seatCost.push_back(5);//front passenger
 	seatCost.push_back(2);//leftWindo
@@ -21,7 +29,7 @@ Sedan::Sedan()
 	seatCost.push_back(1);//middleseat
 }
 
-Sedan::Sedan(string first, string last, string colour)
+Sedan::Sedan(string first, string last, string colour) //constructor-params
 {
 	driverFirst = first;
 	driverLast = last;
@@ -54,7 +62,7 @@ Sedan::Sedan(string first, string last, string colour)
 	}
 }//*/
 
-bool Sedan::getSeat(int seatNum)
+bool Sedan::getSeat(int seatNum) //accessor for seat, pulls from vehicle.
 {
 	if (seatNum >= 0 && seatNum < seats)
 	{
@@ -81,7 +89,7 @@ int Sedan::getSeatVal(int seatNum)
 	}
 }//*/
 
-char Sedan::dispSeat(int seatNum)
+char Sedan::dispSeat(int seatNum) //displays seat
 {
 	if (openSeats.at(seatNum) == 0)
 	{
