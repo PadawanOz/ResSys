@@ -26,7 +26,7 @@ Person::Person(string fname, string lname, int creds) { //constructor with name 
 	first_name = fname;
 	last_name = lname;
 	credits = creds;
-	pin = 0;
+	pin = -1;
 	carResd = -1;
 	colorResd = -1;
 	seatResd = -1;
@@ -37,11 +37,12 @@ int Person::GetCreds() { //credit accessor
 	return credits;
 }
 
-void Person::setResInfo(int Car, int Color, int Seat) //reservation mutator, changes the seat, color of car, and type of car
+void Person::setResInfo(int Car, int Color, int Seat, int PIN) //reservation mutator, changes the seat, color of car, and type of car
 {
 	carResd = Car;
 	colorResd = Color;
 	seatResd = Seat;
+	pin = PIN;
 }
 
 void Person::SetCreds(int creds_to_set) { //credit mutator

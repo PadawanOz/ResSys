@@ -38,7 +38,7 @@ public:						//function prototypes, purposes detailed in person.cpp documentatio
 	int getSpent();
 
 	void spendCred(int spending);
-	void setResInfo(int Car, int Color, int Seat);
+	void setResInfo(int Car, int Color, int Seat, int PIN);
 	void SetCreds(int creds_to_set);
 	void SetFirstName(string name);
 	void SetLastName(string name);

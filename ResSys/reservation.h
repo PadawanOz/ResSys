@@ -46,7 +46,7 @@ public:
 	void Display();
 	void Modify();
 	void Unreserve(int carType, int carCol, int seatPos);
-	void Reserve(int carType, int carCol, int seatPos, int personPos);
+	void Reserve(int carType, int carCol, int seatPos, int personPos, int PIN);
 	void Reservations();
 	void Menu();
 };

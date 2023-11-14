@@ -72,7 +72,7 @@ int Reservation::Create() //creates reservation, returns 3 digit pin number
 		return 0;
 	}
 
-	if (passengers.at(PersonPos).GetPin() != -1)
+	if (passengers.at(PersonPos).GetPin() > 0)
 	{
 		cout << "You already have a Reservation.";// prevent overbooking as it will break someThing
 		cout << " Your Pin is: " << passengers.at(PersonPos).GetPin();// For security reasons this should be removed. For testing only.
@@ -138,10 +138,10 @@ int Reservation::Create() //creates reservation, returns 3 digit pin number
 						CarPin = 1;
 						PosPin = i;
 						seatPos = 1;
-						passengers.at(PersonPos).setResInfo(CarPin, PosPin, seatPos-1);
+						ReturnPIN = makePIN(seatPos);
+						passengers.at(PersonPos).setResInfo(CarPin, PosPin, seatPos-1, ReturnPIN);
 						passengers.at(PersonPos).spendCred(passengerValue);
 						pickups.at(i).setSeat(0, 0);//set seat as full
-						ReturnPIN = makePIN(seatPos);
 						cout << "Reservation Made, Your Reservation Pin is: ";
 						break;
 					}
@@ -156,10 +156,10 @@ int Reservation::Create() //creates reservation, returns 3 digit pin number
 							CarPin = 2;
 							PosPin = i;
 							seatPos = 1;
-							compacts.at(i).setSeat(0, 0);//set seat as full
-							passengers.at(PersonPos).setResInfo(CarPin, PosPin, seatPos-1);
-							passengers.at(PersonPos).spendCred(passengerValue);
 							ReturnPIN = makePIN(seatPos);
+							compacts.at(i).setSeat(0, 0);//set seat as full
+							passengers.at(PersonPos).setResInfo(CarPin, PosPin, seatPos-1, ReturnPIN);
+							passengers.at(PersonPos).spendCred(passengerValue);
 							break;
 						}
 					}
@@ -174,10 +174,10 @@ int Reservation::Create() //creates reservation, returns 3 digit pin number
 							CarPin = 3;
 							PosPin = i;
 							seatPos = 1;
-							passengers.at(PersonPos).setResInfo(CarPin, PosPin, seatPos-1);
+							ReturnPIN = makePIN(seatPos);
+							passengers.at(PersonPos).setResInfo(CarPin, PosPin, seatPos-1, ReturnPIN);
 							passengers.at(PersonPos).spendCred(passengerValue);
 							sedans.at(i).setSeat(0, 0);//set seat as full
-							ReturnPIN = makePIN(seatPos);
 							break;
 						}
 					}
@@ -206,10 +206,10 @@ int Reservation::Create() //creates reservation, returns 3 digit pin number
 					CarPin = 2;
 					PosPin = i;
 					seatPos = 2;
-					passengers.at(PersonPos).setResInfo(CarPin, PosPin, seatPos-1);
+					ReturnPIN = makePIN(seatPos);
+					passengers.at(PersonPos).setResInfo(CarPin, PosPin, seatPos-1,ReturnPIN);
 					passengers.at(PersonPos).spendCred(BackValue);
 					compacts.at(i).setSeat(1, 0);//set seat as full
-					ReturnPIN = makePIN(seatPos);
 					cout << "Reservation Made, Your Reservation Pin is: ";
 					break;
 				}
@@ -218,10 +218,10 @@ int Reservation::Create() //creates reservation, returns 3 digit pin number
 					CarPin = 2;
 					PosPin = i;
 					seatPos = 3;
-					passengers.at(PersonPos).setResInfo(CarPin, PosPin, seatPos - 1);
+					ReturnPIN = makePIN(seatPos);
+					passengers.at(PersonPos).setResInfo(CarPin, PosPin, seatPos - 1,ReturnPIN);
 					passengers.at(PersonPos).spendCred(BackValue);
 					compacts.at(i).setSeat(2, 0);//set seat as full
-					ReturnPIN = makePIN(seatPos);
 					cout << "Reservation Made, Your Reservation Pin is: ";
 					break;
 				}
@@ -249,10 +249,10 @@ int Reservation::Create() //creates reservation, returns 3 digit pin number
 					CarPin = 3;
 					PosPin = i;
 					seatPos = 2;
-					passengers.at(PersonPos).setResInfo(CarPin, PosPin, seatPos - 1);
+					ReturnPIN = makePIN(seatPos);
+					passengers.at(PersonPos).setResInfo(CarPin, PosPin, seatPos - 1,ReturnPIN);
 					passengers.at(PersonPos).spendCred(SideValue);
 					sedans.at(i).setSeat(1, 0);//set seat as full
-					ReturnPIN = makePIN(seatPos);
 					cout << "Reservation Made, Your Reservation Pin is: ";
 					break;
 				}
@@ -261,10 +261,10 @@ int Reservation::Create() //creates reservation, returns 3 digit pin number
 					CarPin = 3;
 					PosPin = i;
 					seatPos = 3;
-					passengers.at(PersonPos).setResInfo(CarPin, PosPin, seatPos - 1);
+					ReturnPIN = makePIN(seatPos);
+					passengers.at(PersonPos).setResInfo(CarPin, PosPin, seatPos - 1,ReturnPIN);
 					passengers.at(PersonPos).spendCred(SideValue);
 					sedans.at(i).setSeat(2, 0);//set seat as full
-					ReturnPIN = makePIN(seatPos);
 					cout << "Reservation Made, Your Reservation Pin is: ";
 					break;
 				}
@@ -290,10 +290,10 @@ int Reservation::Create() //creates reservation, returns 3 digit pin number
 					CarPin = 3;
 					PosPin = i;
 					seatPos = 4;
-					passengers.at(PersonPos).setResInfo(CarPin, PosPin, seatPos - 1);
+					ReturnPIN = makePIN(seatPos);
+					passengers.at(PersonPos).setResInfo(CarPin, PosPin, seatPos - 1, ReturnPIN);
 					passengers.at(PersonPos).spendCred(MiddleValue);
 					sedans.at(i).setSeat(3, 0);//set seat as full
-					ReturnPIN = makePIN(seatPos);
 					cout << "Reservation Made, Your Reservation Pin is: ";
 					break;
 				}
@@ -390,9 +390,9 @@ int Reservation::Create() //creates reservation, returns 3 digit pin number
 					//seat available. make reservation
 					pickups.at(tempcol).setSeat(passenger, 0);//seatnum (0 is passenger),availability (0 is full)
 					//pickups.at(tempcol).setSeat(2, 0);//set seat as full
-					passengers.at(PersonPos).setResInfo(CarPin, PosPin-1, seatPos - 1);
-					passengers.at(PersonPos).spendCred(passengerValue);
 					ReturnPIN = makePIN(seatPos);//makepin
+					passengers.at(PersonPos).setResInfo(CarPin, PosPin-1, seatPos - 1,ReturnPIN);
+					passengers.at(PersonPos).spendCred(passengerValue);
 					cout << "Reservation Made, Your Reservation Pin is: ";
 				}
 				else
@@ -415,7 +415,8 @@ int Reservation::Create() //creates reservation, returns 3 digit pin number
 				{
 					//seat available. make reservation
 					compacts.at(tempcol).setSeat(seatPos - 1, 0);//seatpos-1 
-					passengers.at(PersonPos).setResInfo(CarPin, PosPin-1, seatPos - 1);
+					ReturnPIN = makePIN(seatPos);
+					passengers.at(PersonPos).setResInfo(CarPin, PosPin-1, seatPos - 1,ReturnPIN);
 					passengers.at(PersonPos).spendCred(compacts.at(tempcol).getSeatVal(seatPos));
 					ReturnPIN = makePIN(seatPos);
 					cout << "Reservation Made, Your Reservation Pin is: ";
@@ -440,9 +441,9 @@ int Reservation::Create() //creates reservation, returns 3 digit pin number
 				{
 					//seat available. make reservation
 					sedans.at(tempcol).setSeat(seatPos - 1, 0);//seatpos-1 
-					passengers.at(PersonPos).setResInfo(CarPin, PosPin-1, seatPos - 1);
-					passengers.at(PersonPos).spendCred(sedans.at(tempcol).getSeatVal(seatPos));
 					ReturnPIN = makePIN(seatPos);//3 digit pin
+					passengers.at(PersonPos).setResInfo(CarPin, PosPin-1, seatPos - 1,ReturnPIN);
+					passengers.at(PersonPos).spendCred(sedans.at(tempcol).getSeatVal(seatPos));
 					cout << "Reservation Made, Your Reservation Pin is: ";
 				}
 				else
@@ -516,12 +517,12 @@ void Reservation::Display()//display all seat availability and costs
 
 }
 
-int Reservation::makePIN(int saet)//returns unique value for pin that hold information plus random digit plus pinlength.
+int Reservation::makePIN(int saet)//returns unique-ish value for pin that holds some information plus random digit plus pinlength.
 {
 
 	int temp;
-	int randomNum = makeRand(1);//get 1 random digit
-	string tempNum = to_string(saet + 1) + to_string(randomNum) + to_string(PINS.size());
+	int randomNum = makeRand(2);//get 1 random digit
+	string tempNum = /*to_string(saet + 1) +*/ to_string(randomNum) + to_string(PINS.size());//making pin a little more random while still being fairly unique
 	temp = chartoint(tempNum);//make integers
 	return temp;//return pin (seat location+1 + 2 random digits)
 }
@@ -693,7 +694,7 @@ void Reservation::Modify()//light testing worked
 		Unreserve(oldCarPos, oldCarCol, oldCarSeat);
 
 		//reserve selected seat
-		Reserve(carPin, carPos, seatPos, personLoc);
+		Reserve(carPin, carPos, seatPos, personLoc,pinNum);
 	}
 }
 	
@@ -718,23 +719,23 @@ void Reservation::Unreserve(int carType, int carCol, int seatPos)
 	}
 }
 
-void Reservation::Reserve(int carType, int carCol, int seatPos, int personPos)//reserves in res and person classes.
+void Reservation::Reserve(int carType, int carCol, int seatPos, int personPos, int PIN)//reserves in res and person classes.
 {
 	//was made after Create function so is not used in there.
 	if (carType == 1)//unreserve pickup
 	{
 		pickups.at(carCol).setSeat(seatPos, 0);
-		passengers.at(personPos).setResInfo(carType, carCol, seatPos);
+		passengers.at(personPos).setResInfo(carType, carCol, seatPos,PIN);
 	}
 	else if (carType == 2)//unreserve compact
 	{
 		compacts.at(carCol).setSeat(seatPos, 0);
-		passengers.at(personPos).setResInfo(carType, carCol, seatPos);
+		passengers.at(personPos).setResInfo(carType, carCol, seatPos,PIN);
 	}
 	else if (carType == 3)
 	{
 		sedans.at(carCol).setSeat(seatPos, 0);
-		passengers.at(personPos).setResInfo(carType, carCol, seatPos);
+		passengers.at(personPos).setResInfo(carType, carCol, seatPos,PIN);
 	}
 	else
 	{
@@ -895,7 +896,7 @@ void Reservation::Delete()
 	Unreserve(tempCar, tempColl, tempSeat);
 	PINS.erase(PINS.begin() + pinLoc);
 	passengers.at(personPos).SetPin(-1);//remove pin stored at person
-	passengers.at(personPos).setResInfo(-1, -1, -1);//set info to default impossible number.
+	passengers.at(personPos).setResInfo(-1, -1, -1, pin_in);//set info to default impossible number.
 }
 
 void Reservation::Print()//not looking at all seats?
@@ -1135,7 +1136,7 @@ void Reservation::Reservations()
 						}
 					}
 					OutFile << " and ";
-					if (compacts.at(i).getSeat(1) == 1)
+					if (compacts.at(i).getSeat(2) == 1)
 					{
 						OutFile << "Unasigned"<<endl;
 					}
