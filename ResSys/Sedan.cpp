@@ -2,7 +2,7 @@
 * Sedan.cpp
 * gavin mcintosh and shaun ryan
 * cpet 321
-*
+* 11/13/23
 * main file for class Sedan. Sedan is a subclass of Vehicle.
 */
 
@@ -50,18 +50,6 @@ Sedan::Sedan(string first, string last, string colour) //constructor-params
 	seatCost.push_back(1);//middleseat
 }
 
-/*void Sedan::setSeat(bool claim, int seatNum)
-{
-	if (seatNum >= 0 && seatNum < seats)
-	{
-		openSeats.at(seatNum) = claim;
-	}
-	else
-	{
-		cout << "Invalid Seat. No Changes Made." << endl;
-	}
-}//*/
-
 bool Sedan::getSeat(int seatNum) //accessor for seat, pulls from vehicle.
 {
 	if (seatNum >= 0 && seatNum < seats)
@@ -75,19 +63,6 @@ bool Sedan::getSeat(int seatNum) //accessor for seat, pulls from vehicle.
 	}
 }
 
-/*
-int Sedan::getSeatVal(int seatNum)
-{
-	if (seatNum >= 0 && seatNum < seats)
-	{
-		return seatCost.at(seatNum);
-	}
-	else
-	{
-		cout << "Invalid Seat. Returning 0." << endl;
-		return(0);
-	}
-}//*/
 
 char Sedan::dispSeat(int seatNum) //displays seat
 {

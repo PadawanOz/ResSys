@@ -1,6 +1,6 @@
 /*
 * person.h
-* gavin mcintosh and shaun ryan
+* AUTHORS: Gavin McIntosh and Shaun Ryan
 * cpet 321
 *
 * header file for class person.
@@ -12,7 +12,7 @@
 
 using namespace std;
 
-class Person { 
+class Person {
 private:					// private members are full name, credits, current seat cost, seat in car, color of car, type of car, and PIN
 	string first_name;
 	string last_name;

@@ -1,23 +1,23 @@
 /*
-* reservation.cpp
-* gavin mcintosh and shaun ryan
-* cpet 321
-*
-* main file for class reservation. stores the primary functions needed to perform reservations.
+* TITLE: reservation.cpp
+* AUTHORS: Gavin McIntosh and Shaun Ryan
+* COURSE: CPET 321
+* DATE: 11/13/23
+* DESCRIPTION: main file for class reservation. stores the primary functions needed to perform reservations.
 */
 
 #include "reservation.h"
 
 //ease of access value definitions
-#define passengerValue	5
-#define BackValue		3
-#define SideValue		2
-#define MiddleValue		1
-#define passenger		0
-#define windowLeft		1
-#define windowRight		2
-#define middle			3
-#define Cars			3
+#define PASSENGERVALUE	5
+#define BACKVALUE		3
+#define SIDEVALUE		2
+#define MIDDLEVALUE		1
+#define PASSENGER		0
+#define WINDOWLEFT		1
+#define WINDOWRIGHT		2
+#define MIDDLE			3
+#define CARS			3
 
 Reservation::Reservation()	//constructor, reads in people to vectors defined in reservation
 {
@@ -57,7 +57,7 @@ int Reservation::Create() //creates reservation, returns 3 digit pin number
 	//nameEntered = FirstName;
 	FirstName = makeLower(FirstName);
 
-	soq = getPassengerInfo(PersonPos, cred, FirstName,true);// moved to different function for testing and visual reasons
+	soq = getPassengerInfo(PersonPos, cred, FirstName, true);// moved to different function for testing and visual reasons
 
 	if (soq == 0)//if person doesnt exist
 	{
@@ -86,14 +86,14 @@ int Reservation::Create() //creates reservation, returns 3 digit pin number
 		cin >> FirstName;
 		//nameEntered = FirstName;
 		FirstName = makeLower(FirstName);
-		startover = getPassengerInfo(PersonPos, cred, FirstName,true);// moved to different function for testing and visual reasons
+		startover = getPassengerInfo(PersonPos, cred, FirstName, true);// moved to different function for testing and visual reasons
 	}
 
 
 	//startover = 1;
 	while (startover)//start over with name and credits still loaded.
 	{
-		startover = 0;//wont restart unless told to (no get stuck in loop)
+		startover = 0;//wont restart unless told to
 
 		//Display Diagram//
 		cout << endl;
@@ -104,7 +104,7 @@ int Reservation::Create() //creates reservation, returns 3 digit pin number
 		cout << "please enter a seat catagory: " << "Specific, Passenger, Back Seat, Side Window, Middle, or Exit: " << endl;
 
 		getline(cin, seatChoice);
-		if (seatChoice == "")// kept just grabbing nothing? simple fix, not ideal.
+		if (seatChoice == "")
 		{
 			getline(cin, seatChoice);
 		}
@@ -122,16 +122,16 @@ int Reservation::Create() //creates reservation, returns 3 digit pin number
 		if (seatChoice == "passenger")//seat 0
 		{
 			//check for first available passenger seat (any car)-------------------------------------
-			if (cred < passengerValue)
+			if (cred < PASSENGERVALUE)
 			{
-				cout << "Not enough credits for this seat. You need at least " << passengerValue << " credits, but you have " << cred << " credits." << endl << endl;
-				//error start over. ****
+				cout << "Not enough credits for this seat. You need at least " << PASSENGERVALUE << " credits, but you have " << cred << " credits." << endl << endl;
+				
 				startover = true;
 				//break;				
 			}
 			if (startover == false)
 			{
-				for (int i = 0; startover == false && i < Cars; i++)//using Cars as size of the vehicle vectors. could make it modular with pickups.length() but no need.
+				for (int i = 0; startover == false && i < CARS; i++)//using Cars as size of the vehicle vectors. could make it modular with pickups.length() but no need.
 				{
 					if (pickups.at(i).getSeat() == 1)//if seat open
 					{
@@ -139,8 +139,8 @@ int Reservation::Create() //creates reservation, returns 3 digit pin number
 						PosPin = i;
 						seatPos = 1;
 						ReturnPIN = makePIN(seatPos);
-						passengers.at(PersonPos).setResInfo(CarPin, PosPin, seatPos-1, ReturnPIN);
-						passengers.at(PersonPos).spendCred(passengerValue);
+						passengers.at(PersonPos).setResInfo(CarPin, PosPin, seatPos - 1, ReturnPIN);
+						passengers.at(PersonPos).spendCred(PASSENGERVALUE);
 						pickups.at(i).setSeat(0, 0);//set seat as full
 						cout << "Reservation Made, Your Reservation Pin is: ";
 						break;
@@ -149,7 +149,7 @@ int Reservation::Create() //creates reservation, returns 3 digit pin number
 
 				if (CarPin == 0)//check if car was already found
 				{
-					for (int i = 0; i < Cars; i++)
+					for (int i = 0; i < CARS; i++)
 					{
 						if (compacts.at(i).getSeat(0) == 1)//if is open
 						{
@@ -158,8 +158,8 @@ int Reservation::Create() //creates reservation, returns 3 digit pin number
 							seatPos = 1;
 							ReturnPIN = makePIN(seatPos);
 							compacts.at(i).setSeat(0, 0);//set seat as full
-							passengers.at(PersonPos).setResInfo(CarPin, PosPin, seatPos-1, ReturnPIN);
-							passengers.at(PersonPos).spendCred(passengerValue);
+							passengers.at(PersonPos).setResInfo(CarPin, PosPin, seatPos - 1, ReturnPIN);
+							passengers.at(PersonPos).spendCred(PASSENGERVALUE);
 							break;
 						}
 					}
@@ -167,7 +167,7 @@ int Reservation::Create() //creates reservation, returns 3 digit pin number
 
 				if (CarPin == 0)//check if car was already found
 				{
-					for (int i = 0; i < Cars; i++)
+					for (int i = 0; i < CARS; i++)
 					{
 						if (sedans.at(i).getSeat(0) == 1)//if is available
 						{
@@ -175,8 +175,8 @@ int Reservation::Create() //creates reservation, returns 3 digit pin number
 							PosPin = i;
 							seatPos = 1;
 							ReturnPIN = makePIN(seatPos);
-							passengers.at(PersonPos).setResInfo(CarPin, PosPin, seatPos-1, ReturnPIN);
-							passengers.at(PersonPos).spendCred(passengerValue);
+							passengers.at(PersonPos).setResInfo(CarPin, PosPin, seatPos - 1, ReturnPIN);
+							passengers.at(PersonPos).spendCred(PASSENGERVALUE);
 							sedans.at(i).setSeat(0, 0);//set seat as full
 							break;
 						}
@@ -190,16 +190,16 @@ int Reservation::Create() //creates reservation, returns 3 digit pin number
 		//--------------------------------------------------------------Set Back Seat Info--------------------------------------------------------------//
 		else if (seatChoice == "back seat")//seat 1 and 2
 		{
-			if (cred < BackValue)
+			if (cred < BACKVALUE)
 			{
-				cout << "Not enough credits for this seat. You need at least " << passengerValue << " credits. You have " << cred << " credits." << endl << endl;
+				cout << "Not enough credits for this seat. You need at least " << PASSENGERVALUE << " credits. You have " << cred << " credits." << endl << endl;
 				//error start over. ****
 				startover = true;
 				//break;
 			}
 
-			//check for first avaiable window seat (compact), only need to check compact's seats 1 and 2
-			for (int i = 0; i < Cars; i++)
+			//check for first available window seat (compact), only need to check compact's seats 1 and 2
+			for (int i = 0; i < CARS; i++)
 			{
 				if (compacts.at(i).getSeat(1) == 1)//if is open
 				{
@@ -207,8 +207,8 @@ int Reservation::Create() //creates reservation, returns 3 digit pin number
 					PosPin = i;
 					seatPos = 2;
 					ReturnPIN = makePIN(seatPos);
-					passengers.at(PersonPos).setResInfo(CarPin, PosPin, seatPos-1,ReturnPIN);
-					passengers.at(PersonPos).spendCred(BackValue);
+					passengers.at(PersonPos).setResInfo(CarPin, PosPin, seatPos - 1, ReturnPIN);
+					passengers.at(PersonPos).spendCred(BACKVALUE);
 					compacts.at(i).setSeat(1, 0);//set seat as full
 					cout << "Reservation Made, Your Reservation Pin is: ";
 					break;
@@ -219,8 +219,8 @@ int Reservation::Create() //creates reservation, returns 3 digit pin number
 					PosPin = i;
 					seatPos = 3;
 					ReturnPIN = makePIN(seatPos);
-					passengers.at(PersonPos).setResInfo(CarPin, PosPin, seatPos - 1,ReturnPIN);
-					passengers.at(PersonPos).spendCred(BackValue);
+					passengers.at(PersonPos).setResInfo(CarPin, PosPin, seatPos - 1, ReturnPIN);
+					passengers.at(PersonPos).spendCred(BACKVALUE);
 					compacts.at(i).setSeat(2, 0);//set seat as full
 					cout << "Reservation Made, Your Reservation Pin is: ";
 					break;
@@ -233,16 +233,16 @@ int Reservation::Create() //creates reservation, returns 3 digit pin number
 		//--------------------------------------------------------------set window seat Info--------------------------------------------------------------//
 		else if (seatChoice == "side window")//seat 1 and 2
 		{
-			if (cred < SideValue)
+			if (cred < SIDEVALUE)
 			{
-				cout << "Not enough credits for this seat. You need at least " << passengerValue << " credits. You have " << cred << " credits." << endl << endl;
+				cout << "Not enough credits for this seat. You need at least " << PASSENGERVALUE << " credits. You have " << cred << " credits." << endl << endl;
 				//error start over. ****
 				startover = true;
 				//break;
 			}
 
 			//only need to check sedans's seats 1 and 2
-			for (int i = 0; i < Cars; i++)
+			for (int i = 0; i < CARS; i++)
 			{
 				if (sedans.at(i).getSeat(1) == 1)//if is open
 				{
@@ -250,8 +250,8 @@ int Reservation::Create() //creates reservation, returns 3 digit pin number
 					PosPin = i;
 					seatPos = 2;
 					ReturnPIN = makePIN(seatPos);
-					passengers.at(PersonPos).setResInfo(CarPin, PosPin, seatPos - 1,ReturnPIN);
-					passengers.at(PersonPos).spendCred(SideValue);
+					passengers.at(PersonPos).setResInfo(CarPin, PosPin, seatPos - 1, ReturnPIN);
+					passengers.at(PersonPos).spendCred(SIDEVALUE);
 					sedans.at(i).setSeat(1, 0);//set seat as full
 					cout << "Reservation Made, Your Reservation Pin is: ";
 					break;
@@ -262,8 +262,8 @@ int Reservation::Create() //creates reservation, returns 3 digit pin number
 					PosPin = i;
 					seatPos = 3;
 					ReturnPIN = makePIN(seatPos);
-					passengers.at(PersonPos).setResInfo(CarPin, PosPin, seatPos - 1,ReturnPIN);
-					passengers.at(PersonPos).spendCred(SideValue);
+					passengers.at(PersonPos).setResInfo(CarPin, PosPin, seatPos - 1, ReturnPIN);
+					passengers.at(PersonPos).spendCred(SIDEVALUE);
 					sedans.at(i).setSeat(2, 0);//set seat as full
 					cout << "Reservation Made, Your Reservation Pin is: ";
 					break;
@@ -275,15 +275,15 @@ int Reservation::Create() //creates reservation, returns 3 digit pin number
 		//--------------------------------------------------------------set middle seat Info--------------------------------------------------------------//
 		else if (seatChoice == "middle")//seat 3
 		{
-			if (cred < MiddleValue)
+			if (cred < MIDDLEVALUE)
 			{
-				cout << "Not enough credits for this seat. You need at least " << passengerValue << " credits. You have " << cred << " credits." << endl << endl;
+				cout << "Not enough credits for this seat. You need at least " << PASSENGERVALUE << " credits. You have " << cred << " credits." << endl << endl;
 				//error start over. ****
 				startover = true;
 				//break;
 			}
 			//only need to check sedans's seat 3
-			for (int i = 0; i < Cars; i++)
+			for (int i = 0; i < CARS; i++)
 			{
 				if (sedans.at(i).getSeat(3) == 1)//if is open
 				{
@@ -292,7 +292,7 @@ int Reservation::Create() //creates reservation, returns 3 digit pin number
 					seatPos = 4;
 					ReturnPIN = makePIN(seatPos);
 					passengers.at(PersonPos).setResInfo(CarPin, PosPin, seatPos - 1, ReturnPIN);
-					passengers.at(PersonPos).spendCred(MiddleValue);
+					passengers.at(PersonPos).spendCred(MIDDLEVALUE);
 					sedans.at(i).setSeat(3, 0);//set seat as full
 					cout << "Reservation Made, Your Reservation Pin is: ";
 					break;
@@ -379,20 +379,20 @@ int Reservation::Create() //creates reservation, returns 3 digit pin number
 
 			if (CarPin == 1 && seatPos == 1)//truck && passenger
 			{
-				if (cred < passengerValue)
+				if (cred < PASSENGERVALUE)
 				{
-					cout << "Not enough credits for this seat. You need at least " << passengerValue << " credits, but you have " << cred << " credits." << endl << endl;
+					cout << "Not enough credits for this seat. You need at least " << PASSENGERVALUE << " credits, but you have " << cred << " credits." << endl << endl;
 					//error start over. ****
 					startover = true;
 				}
 				else if (pickups.at(tempcol).getSeat() == 1)
 				{
 					//seat available. make reservation
-					pickups.at(tempcol).setSeat(passenger, 0);//seatnum (0 is passenger),availability (0 is full)
+					pickups.at(tempcol).setSeat(PASSENGER, 0);//seatnum (0 is passenger),availability (0 is full)
 					//pickups.at(tempcol).setSeat(2, 0);//set seat as full
 					ReturnPIN = makePIN(seatPos);//makepin
-					passengers.at(PersonPos).setResInfo(CarPin, PosPin-1, seatPos - 1,ReturnPIN);
-					passengers.at(PersonPos).spendCred(passengerValue);
+					passengers.at(PersonPos).setResInfo(CarPin, PosPin - 1, seatPos - 1, ReturnPIN);
+					passengers.at(PersonPos).spendCred(PASSENGERVALUE);
 					cout << "Reservation Made, Your Reservation Pin is: ";
 				}
 				else
@@ -416,7 +416,7 @@ int Reservation::Create() //creates reservation, returns 3 digit pin number
 					//seat available. make reservation
 					compacts.at(tempcol).setSeat(seatPos - 1, 0);//seatpos-1 
 					ReturnPIN = makePIN(seatPos);
-					passengers.at(PersonPos).setResInfo(CarPin, PosPin-1, seatPos - 1,ReturnPIN);
+					passengers.at(PersonPos).setResInfo(CarPin, PosPin - 1, seatPos - 1, ReturnPIN);
 					passengers.at(PersonPos).spendCred(compacts.at(tempcol).getSeatVal(seatPos));
 					ReturnPIN = makePIN(seatPos);
 					cout << "Reservation Made, Your Reservation Pin is: ";
@@ -442,7 +442,7 @@ int Reservation::Create() //creates reservation, returns 3 digit pin number
 					//seat available. make reservation
 					sedans.at(tempcol).setSeat(seatPos - 1, 0);//seatpos-1 
 					ReturnPIN = makePIN(seatPos);//3 digit pin
-					passengers.at(PersonPos).setResInfo(CarPin, PosPin-1, seatPos - 1,ReturnPIN);
+					passengers.at(PersonPos).setResInfo(CarPin, PosPin - 1, seatPos - 1, ReturnPIN);
 					passengers.at(PersonPos).spendCred(sedans.at(tempcol).getSeatVal(seatPos));
 					cout << "Reservation Made, Your Reservation Pin is: ";
 				}
@@ -450,7 +450,6 @@ int Reservation::Create() //creates reservation, returns 3 digit pin number
 				{
 					//seat not available. Error/Retry.
 					cout << "Seat already reserved. Please make another reservation." << endl;
-					//error start over. ****
 					startover = true;
 					//break;
 				}
@@ -477,14 +476,14 @@ int Reservation::Create() //creates reservation, returns 3 digit pin number
 	}
 
 	cout << "reached end of function. Something went wrong. returning 0." << endl;
-	return 0;// code shouldnt get here but just in case.
+	return 0;
 }
 
 void Reservation::Display()//display all seat availability and costs
 {
 	int temp = 0;
 
-	cout << setw(10) << "Trucks" << setw(11) << "Compact" << setw(10) << "Sedan" << endl;//title peice
+	cout << setw(10) << "Trucks" << setw(11) << "Compact" << setw(10) << "Sedan" << endl;//title piece
 	cout << setw(10) << "------" << setw(11) << "-------" << setw(11) << "-------" << endl;
 
 	//car format:
@@ -493,7 +492,7 @@ void Reservation::Display()//display all seat availability and costs
 	//2 - 5 - 8
 
 
-	// setw( ( 11 - (7 - compacts.at(i).getColor().length()) ) ) could be used to center text.
+	
 	for (int i = 0; i < 3; i++)
 	{
 		//display vehicle colors
@@ -504,13 +503,13 @@ void Reservation::Display()//display all seat availability and costs
 
 		//First row of seats (Driver and Passenger)
 		cout << setw(7) << "(-)" << "(" << pickups.at(i).dispSeat() << ')';
-		cout << setw(8) << "(-) " << '(' << compacts.at(i).dispSeat(passenger) << ')';
-		cout << setw(9) << "(-)   " << '(' << sedans.at(i).dispSeat(passenger) << ')';
+		cout << setw(8) << "(-) " << '(' << compacts.at(i).dispSeat(PASSENGER) << ')';
+		cout << setw(9) << "(-)   " << '(' << sedans.at(i).dispSeat(PASSENGER) << ')';
 		cout << endl;
 
 		/*--------------no second row for picuptrucks--------------*/
-		cout << setw(15) << '(' << compacts.at(i).dispSeat(windowRight) << ')' << " (" << compacts.at(i).dispSeat(windowLeft) << ')';
-		cout << setw(4) << '(' << sedans.at(i).dispSeat(windowRight) << ')' << '(' << sedans.at(i).dispSeat(middle) << ')' << '(' << sedans.at(i).dispSeat(windowLeft) << ')';
+		cout << setw(15) << '(' << compacts.at(i).dispSeat(WINDOWLEFT) << ')' << " (" << compacts.at(i).dispSeat(WINDOWRIGHT) << ')';
+		cout << setw(4) << '(' << sedans.at(i).dispSeat(WINDOWLEFT) << ')' << '(' << sedans.at(i).dispSeat(MIDDLE) << ')' << '(' << sedans.at(i).dispSeat(WINDOWRIGHT) << ')';
 		cout << endl << endl;
 
 	}
@@ -522,7 +521,7 @@ int Reservation::makePIN(int saet)//returns unique-ish value for pin that holds 
 
 	int temp;
 	int randomNum = makeRand(2);//get 1 random digit
-	string tempNum = /*to_string(saet + 1) +*/ to_string(randomNum) + to_string(PINS.size());//making pin a little more random while still being fairly unique
+	string tempNum =  to_string(randomNum) + to_string(PINS.size());//making pin a little more random while still being fairly unique
 	temp = chartoint(tempNum);//make integers
 	return temp;//return pin (seat location+1 + 2 random digits)
 }
@@ -586,7 +585,7 @@ void Reservation::Modify()//light testing worked
 	oldCarSeat = passengers.at(personLoc).GetSeat();
 
 
-	cout << "Reservation Found. " << "You have " << cred+potCred << " credits to use." << endl << endl;
+	cout << "Reservation Found. " << "You have " << cred + potCred << " credits to use." << endl << endl;
 	Display();
 	cout << "Please select a new car and seat." << endl << "Car Type: ";
 	cin >> NewCarType;
@@ -694,10 +693,10 @@ void Reservation::Modify()//light testing worked
 		Unreserve(oldCarPos, oldCarCol, oldCarSeat);
 
 		//reserve selected seat
-		Reserve(carPin, carPos, seatPos, personLoc,pinNum);
+		Reserve(carPin, carPos, seatPos, personLoc, pinNum);
 	}
 }
-	
+
 void Reservation::Unreserve(int carType, int carCol, int seatPos)
 {
 	if (carType == 1)//unreserve pickup
@@ -715,7 +714,7 @@ void Reservation::Unreserve(int carType, int carCol, int seatPos)
 	else
 	{
 		//error somehow
-		cout << "Error in input. No changes made."<<endl;
+		cout << "Error in input. No changes made." << endl;
 	}
 }
 
@@ -725,17 +724,17 @@ void Reservation::Reserve(int carType, int carCol, int seatPos, int personPos, i
 	if (carType == 1)//unreserve pickup
 	{
 		pickups.at(carCol).setSeat(seatPos, 0);
-		passengers.at(personPos).setResInfo(carType, carCol, seatPos,PIN);
+		passengers.at(personPos).setResInfo(carType, carCol, seatPos, PIN);
 	}
 	else if (carType == 2)//unreserve compact
 	{
 		compacts.at(carCol).setSeat(seatPos, 0);
-		passengers.at(personPos).setResInfo(carType, carCol, seatPos,PIN);
+		passengers.at(personPos).setResInfo(carType, carCol, seatPos, PIN);
 	}
 	else if (carType == 3)
 	{
 		sedans.at(carCol).setSeat(seatPos, 0);
-		passengers.at(personPos).setResInfo(carType, carCol, seatPos,PIN);
+		passengers.at(personPos).setResInfo(carType, carCol, seatPos, PIN);
 	}
 	else
 	{
@@ -744,7 +743,7 @@ void Reservation::Reserve(int carType, int carCol, int seatPos, int personPos, i
 	}
 }
 
-int Reservation::getPassengerInfo(int& position, int& credits, string FirstName,bool textOn)//int so know if person wasnt found
+int Reservation::getPassengerInfo(int& position, int& credits, string FirstName, bool textOn)//int so know if person wasnt found
 {
 	//assume FirstName is all lowercase already.
 	int temp = 0;
@@ -782,11 +781,9 @@ int Reservation::getPassengerInfo(int& position, int& credits, string FirstName,
 	return 1;
 }
 
-void Reservation::CarInfo(string car, string color, int& COlPos, int& carpin, int& colorpin)//might need better names
+void Reservation::CarInfo(string car, string color, int& COlPos, int& carpin, int& colorpin)
 {
-	//carpin is vehicle type
-	//COlPos is which car/car color
-	//colorpin is carpos+1?
+	
 	if (car == "pickup")
 	{
 		carpin = 1;
@@ -796,7 +793,7 @@ void Reservation::CarInfo(string car, string color, int& COlPos, int& carpin, in
 			{
 				COlPos = i;
 				colorpin = i + 1;
-				break;//stop loop so it doesnt go unessearily long
+				break;
 			}
 		}
 		if (COlPos == -1)
@@ -848,7 +845,7 @@ void Reservation::Delete()
 	//delete pin from person, pin vector in reservation, reset the reserve seat, color, and type to 0, restore points spent, set seat in car to true
 	string first_name_in;
 	int pin_in;
-	int personPos=-1;
+	int personPos = -1;
 	int cred;
 	int error = 0;
 	int pinLoc;
@@ -864,7 +861,7 @@ void Reservation::Delete()
 	string first_name = makeLower(first_name_in);	//grab first name, lower for processing
 
 	//---------------Error Check----------------//
-	error=getPassengerInfo(personPos,cred,first_name,false);
+	error = getPassengerInfo(personPos, cred, first_name, false);
 	for (int i = 0; i < PINS.size(); i++)
 	{
 		if (PINS.at(i) == pin_in)
@@ -888,7 +885,7 @@ void Reservation::Delete()
 		//couldnt find person. exit.
 	}
 	//------------------------------------------------//
-	
+
 	tempCar = passengers.at(personPos).GetCar();
 	tempColl = passengers.at(personPos).GetColor();
 	tempSeat = passengers.at(personPos).GetSeat();
@@ -899,7 +896,7 @@ void Reservation::Delete()
 	passengers.at(personPos).setResInfo(-1, -1, -1, pin_in);//set info to default impossible number.
 }
 
-void Reservation::Print()//not looking at all seats?
+void Reservation::Print()
 //needs to print the entire manifest of one car
 {
 	string type_car_in;
@@ -985,15 +982,14 @@ void Reservation::Print()//not looking at all seats?
 	}
 	else
 	{
-		//vehicle type not spelled write.
+		//vehicle type not spelled write. editor's note: this was too good to clean out.
 		cout << "Couldnt find that Vehicle. Returning to menu." << endl;
 		exit;
 	}
 
 	for (int i = 0; i < passengers.size(); i++)
 	{
-		//cout << car << ' ' << color << endl;//Here for Testing
-		//cout << passengers.at(i).GetCar() << ' ' << passengers.at(i).GetColor() << endl << endl;//Here for Testing
+		
 		if (passengers.at(i).GetCar() == car && passengers.at(i).GetColor() == color)
 		{
 			people_in_car.push_back(passengers.at(i));
@@ -1007,20 +1003,20 @@ void Reservation::Print()//not looking at all seats?
 	if (!OutFile.is_open())
 	{
 		cout << "File Error. Unable to make File." << endl;
-		//exit;//exit? not sure what to do here. Probably no problems right?
+		
 	}
 
-	OutFile.clear();//empty file to make sure its fresh
+	OutFile.clear();
 
-	cout << "The people riding in the " << color_car_in << ' ' << type_car_in << " are: " << endl; 
-	OutFile<< "The people riding in the " << color_car_in << ' ' << type_car_in << " are: " << endl;
+	cout << "The people riding in the " << color_car_in << ' ' << type_car_in << " are: " << endl;
+	OutFile << "The people riding in the " << color_car_in << ' ' << type_car_in << " are: " << endl;
 
 
 	if (people_in_car.size() > 0)
 	{
 		for (int i = 0; i < people_in_car.size(); i++)
 		{
-			cout << people_in_car.at(i).GetFirstName()<<endl;
+			cout << people_in_car.at(i).GetFirstName() << endl;
 			OutFile << people_in_car.at(i).GetFirstName() << endl;
 		}
 	}
@@ -1031,20 +1027,14 @@ void Reservation::Print()//not looking at all seats?
 	}
 
 	OutFile.close();
-	/*
-	for (Person p : passengers) 
-	{
-		if (p.GetCar() == car && p.GetColor() = color) {
-			people_in_car.push_back(p);
-		}
-	}//*/
+	
 
 }
 
 void Reservation::Reservations()
 {
 	string passkey;
-	
+
 	cout << "Password is case sensitive." << endl;
 	cout << "Password: ";
 	cin >> passkey;
@@ -1056,7 +1046,7 @@ void Reservation::Reservations()
 		if (!OutFile.is_open())
 		{
 			cout << "could'nt open output File." << endl;
-			//error?
+			
 		}
 		OutFile.clear();
 
@@ -1079,7 +1069,7 @@ void Reservation::Reservations()
 				if (v == 0)//-----------------------pickups-----------------------//
 				{
 					OutFile << pickups.at(i).getColor() << " pickup driven by " << pickups.at(i).GetDriverFirst() << ' ' << pickups.at(i).GetDriverLast() << ": " << endl;
-					
+
 					OutFile << "Passenger: ";//--------------------------------////--------------------------------////--------------------------------//
 					if (pickups.at(i).getSeat())
 					{
@@ -1089,10 +1079,10 @@ void Reservation::Reservations()
 					{
 						for (int j = 0; j < passengers.size(); j++)
 						{
-							if (passengers.at(j).GetCar() == v+1 && passengers.at(j).GetColor() == i)
+							if (passengers.at(j).GetCar() == v + 1 && passengers.at(j).GetColor() == i)
 							{
-								OutFile << passengers.at(j).GetFirstName() << ' ' << passengers.at(j).Getlastname() <<endl;
-								break;//dont need to stay here. we found our guy.
+								OutFile << passengers.at(j).GetFirstName() << ' ' << passengers.at(j).Getlastname() << endl;
+								break;
 							}
 						}
 					}
@@ -1111,10 +1101,10 @@ void Reservation::Reservations()
 					{
 						for (int j = 0; j < passengers.size(); j++)
 						{
-							if (passengers.at(j).GetCar() == v+1 && passengers.at(j).GetColor() == i && passengers.at(j).GetSeat()==0)
+							if (passengers.at(j).GetCar() == v + 1 && passengers.at(j).GetColor() == i && passengers.at(j).GetSeat() == 0)
 							{
 								OutFile << passengers.at(j).GetFirstName() << ' ' << passengers.at(j).Getlastname() << endl;
-								break;//dont need to stay here. we found our guy.
+								break;
 							}
 						}
 					}
@@ -1122,7 +1112,7 @@ void Reservation::Reservations()
 					OutFile << "Back Windows: ";//--------------------------------////--------------------------------////--------------------------------//
 					if (compacts.at(i).getSeat(1) == 1)
 					{
-						OutFile << "Unasigned";//no endl because there is second window seat.
+						OutFile << "Unasigned";
 					}
 					else
 					{
@@ -1130,15 +1120,15 @@ void Reservation::Reservations()
 						{
 							if (passengers.at(j).GetCar() == v + 1 && passengers.at(j).GetColor() == i && passengers.at(j).GetSeat() == 1)
 							{
-								OutFile << passengers.at(j).GetFirstName() << ' ' << passengers.at(j).Getlastname();//no endl.theres another person after.
-								break;//dont need to stay here. we found our guy.
+								OutFile << passengers.at(j).GetFirstName() << ' ' << passengers.at(j).Getlastname();
+								break;
 							}
 						}
 					}
 					OutFile << " and ";
 					if (compacts.at(i).getSeat(2) == 1)
 					{
-						OutFile << "Unasigned"<<endl;
+						OutFile << "Unasigned" << endl;
 					}
 					else
 					{
@@ -1147,7 +1137,7 @@ void Reservation::Reservations()
 							if (passengers.at(j).GetCar() == v + 1 && passengers.at(j).GetColor() == i && passengers.at(j).GetSeat() == 2)
 							{
 								OutFile << passengers.at(j).GetFirstName() << ' ' << passengers.at(j).Getlastname() << endl;
-								break;//dont need to stay here. we found our guy.
+								break;
 							}
 						}
 					}
@@ -1158,7 +1148,7 @@ void Reservation::Reservations()
 					OutFile << sedans.at(i).getColor() << " sedan driven by " << sedans.at(i).GetDriverFirst() << ' ' << sedans.at(i).GetDriverLast() << ": " << endl;
 
 					OutFile << "Passenger: ";//--------------------------------////--------------------------------////--------------------------------//
-					if (sedans.at(i).getSeat(0))//remeber give it seat index not seat associator
+					if (sedans.at(i).getSeat(0))
 					{
 						OutFile << "Unassigned" << endl;
 					}
@@ -1169,7 +1159,7 @@ void Reservation::Reservations()
 							if (passengers.at(j).GetCar() == v + 1 && passengers.at(j).GetColor() == i && passengers.at(j).GetSeat() == 0)
 							{
 								OutFile << passengers.at(j).GetFirstName() << ' ' << passengers.at(j).Getlastname() << endl;
-								break;//dont need to stay here. we found our guy.
+								break;
 							}
 						}
 					}
@@ -1185,8 +1175,8 @@ void Reservation::Reservations()
 						{
 							if (passengers.at(j).GetCar() == v + 1 && passengers.at(j).GetColor() == i && passengers.at(j).GetSeat() == 1)
 							{
-								OutFile << passengers.at(j).GetFirstName() << ' ' << passengers.at(j).Getlastname();//no endl. there is another
-								break;//dont need to stay here. we found our guy.
+								OutFile << passengers.at(j).GetFirstName() << ' ' << passengers.at(j).Getlastname();
+								break;
 							}
 						}
 					}
@@ -1202,7 +1192,7 @@ void Reservation::Reservations()
 							if (passengers.at(j).GetCar() == v + 1 && passengers.at(j).GetColor() == i && passengers.at(j).GetSeat() == 2)
 							{
 								OutFile << passengers.at(j).GetFirstName() << ' ' << passengers.at(j).Getlastname() << endl;
-								break;//dont need to stay here. we found our guy.
+								break;
 							}
 						}
 					}
@@ -1219,14 +1209,14 @@ void Reservation::Reservations()
 							if (passengers.at(j).GetCar() == v + 1 && passengers.at(j).GetColor() == i && passengers.at(j).GetSeat() == 3)
 							{
 								OutFile << passengers.at(j).GetFirstName() << ' ' << passengers.at(j).Getlastname() << endl;
-								break;//dont need to stay here. We found our guy.
+								break;
 							}
 						}
 					}
 					OutFile << endl;
 
 				}
-				
+
 			}
 		}
 
@@ -1242,7 +1232,7 @@ void Reservation::Menu()
 {
 	while (true) {
 		string choice;
-		int tempPin=0;
+		int tempPin = 0;
 		cout << "================RESERVATION SYSTEM==================" << endl;
 		cout << "[C]reate a reservation!" << endl;
 		cout << "[M]odify a reservation!" << endl;
@@ -1257,7 +1247,7 @@ void Reservation::Menu()
 		string real_choice = makeLower(choice);
 
 		if (real_choice == "c" || real_choice == "create") {
-			tempPin=Create();
+			tempPin = Create();
 			if (tempPin > 0)
 			{
 				cout << tempPin << endl << endl;
@@ -1291,4 +1281,3 @@ void Reservation::Menu()
 		}
 	}
 }
-//ofstream outfile(fileName);

@@ -2,7 +2,7 @@
 * person.cpp
 * gavin mcintosh and shaun ryan
 * cpet 321
-* 
+* 11/13/23
 * main file for class person. stores much of the reservation info as well.
 */
 

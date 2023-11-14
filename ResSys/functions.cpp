@@ -2,7 +2,7 @@
 * functions.cpp
 * gavin mcintosh and shaun ryan
 * cpet 321
-*
+* 11/13/23
 * main file for class functions. holds useful functions for programming efficiency.
 */
 
@@ -50,11 +50,6 @@ void FileIn(string fileName, vector<Pickup>& pickups, vector<Compact>& compacts,
 		cout << "File Error. No changes made." << endl;
 		exit;
 	}
-
-	/*
-	* every 3 drivers add 1 to carNum (assuming maxDrivers stays as 9)
-	* after maxDrivers make state negative
-	*/
 
 	for (int i = 0; i < 3; i++)//get first 3 pickup Drivers
 	{

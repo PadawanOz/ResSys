@@ -1,9 +1,9 @@
 /*
-* funstions.h
-* gavin mcintosh and shaun ryan
-* cpet 321
-*
-* header file for class functions.
+* TITLE: functions.h
+* AUTHORS: Gavin McIntosh and Shaun Ryan
+* COURSE: cpet 321
+* DATE: 11/13/23
+* DESCRIPTION: header file for class functions.
 */
 
 #pragma once
@@ -14,7 +14,7 @@
 #include"Person.h"
 
 using namespace std;
-							//function prototypes
+//function prototypes
 int chartoint(string numIn);
 int makeRand(int length);
 int GetFirstDigit(int num);

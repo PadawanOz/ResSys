@@ -2,8 +2,8 @@
 * Sedan.h
 * gavin mcintosh and shaun ryan
 * cpet 321
-*
-* header file for class Sedan. 
+* 11/13/23
+* header file for class Sedan.
 */
 
 #pragma once

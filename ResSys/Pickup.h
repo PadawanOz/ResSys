@@ -1,8 +1,8 @@
 /*
 * Pickup.h
-* gavin mcintosh and shaun ryan
+* AUTHORS: Gavin McIntosh and Shaun Ryan
 * cpet 321
-*
+* 11/13/23
 * header file for class Pickup.
 */
 
@@ -13,7 +13,7 @@ class Pickup : public Vehicle
 {
 public:
 	Pickup();//constructors
-	Pickup(string first, string last, string colour);//should use this one
+	Pickup(string first, string last, string colour);
 
 	//void setSeat(bool claim);//1 is open 0 is filled
 

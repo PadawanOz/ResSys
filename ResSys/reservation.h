@@ -1,8 +1,8 @@
 /*
 * reservation.h
-* gavin mcintosh and shaun ryan
+* AUTHORS: Gavin McIntosh and Shaun Ryan
 * cpet 321
-*
+* 11/13/23
 * header file for class reservation.
 */
 
@@ -22,20 +22,20 @@ private:		//private members are vectors of pins, pickups, compacts, sedans, and 
 
 	//Pins will have pointers to where the seat is as well as a number to make them unique(linked to vector length)
 	vector<int> PINS;
-	//PIN has to be digits long. reservation info now stored in person object. Pin format: seatNum - Random Num
+
 
 	vector<Pickup> pickups;//carPinVal=1
 	vector<Compact> compacts;//carPinVal=2
 	vector<Sedan> sedans;//carPinVal=3
 	vector<Person> passengers;
 
-	int getPassengerInfo(int& position, int& credits, string FirstName,bool textOn);//dont need to access these from outside.
+	int getPassengerInfo(int& position, int& credits, string FirstName, bool textOn);//dont need to access these from outside.
 	void CarInfo(string car, string color, int& carPos, int& carpin, int& colorpin);
 
-	
+
 
 public:
-					//function prototypes
+	//function prototypes
 	Reservation();
 
 	int Create();//takes firstname returns int with reservation pin
@@ -51,11 +51,3 @@ public:
 	void Menu();
 };
 
-//Constructor
-//Create Reservation: returns pin number YES
-//Modify Reservation YES
-//Delete Reservation YES
-//Display YES
-//Print Vehicles YES
-//Print Reservations YES
-//Menu MAYBE
